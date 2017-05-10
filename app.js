@@ -3,21 +3,33 @@ console.log("Started");
 var storage=require('node-persist');
 storage.initSync();
 
-/*
-storage.setItemSync('Account',[{
-	name:'Mohit',
-	balance:678
-}]);
-*/
 
+function createAccount(accounts){
+	var account=storage.getItemSync('account');
+	if(typeof account==='undefined')
+	{
+		account=[];
+	}
+	account.push(accounts);
+	storage.setItemSync('account',account);
 
-var output=storage.getItemSync('Account');
-/*
-output.push({
-	name:'sumit',
-	balance:0});
-storage.setItemSync('Account',output);
-*/
+		return account;
+}
 
-console.log('Show me the account', output);
+function getAccount(accountName){
+	var account=storage.getItemSync('account');
+	var holdItem;
+	account.forEach(function(account){
+		if(account.name===accountName){
+			holdItem=account;
+		}
+		});
+	return holdItem;
 
+}
+
+//createAccount({
+	//name:'facebook',
+	//link:'url'
+//});
+console.log(getAccount('facebook'));
