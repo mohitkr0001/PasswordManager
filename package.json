@@ -1,0 +1,23 @@
+{
+  "name": "password",
+  "version": "1.0.0",
+  "description": "Hold password and retrieve them on search",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohitkr0001/PasswordManager.git"
+  },
+  "author": "Mohit Singh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mohitkr0001/PasswordManager/issues"
+  },
+  "homepage": "https://github.com/mohitkr0001/PasswordManager#readme",
+  "dependencies": {
+    "node-persist": "^2.0.11"
+  }
+}
