@@ -28,8 +28,8 @@ function getAccount(accountName){
 
 }
 
-//createAccount({
-	//name:'facebook',
-	//link:'url'
-//});
+createAccount({
+	name:'facebook',
+	password:'Hello World'
+});
 console.log(getAccount('facebook'));
