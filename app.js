@@ -74,7 +74,7 @@ function getAccounts(masterpassword){
 function saveAccount(account,masterpassword){
 
 	let enaccount=crypto.AES.encrypt(JSON.stringify(account),masterpassword);	
-	storage.setItemSync('account',enaccount);
+	storage.setItemSync('account',enaccount.toString());
 
 	return account;
 }
@@ -101,17 +101,22 @@ function getAccount(accountName,masterpassword){
 }
 
 if(command==='create'){
-	let store=createAccount({
+	try{
+		let store=createAccount({
 		name:argv.name,
 		username:argv.username,
 		password:argv.password
 	},argv.masterpassword);
 
-console.log('Account Created');
-console.log(store);
+		console.log('Account Created');
+		console.log(store);
+	}catch(e){
+		console.log('Unable to do anything');
+	}
 }
 else if(command==='get'){
-	let show=getAccount(argv.name,agrv.masterpassword);
+	try{
+		let show=getAccount(argv.name,argv.masterpassword);
 
 	if(typeof show==='undefined'){
 		console.log('Sorry but your account is not found');
@@ -120,4 +125,7 @@ else if(command==='get'){
 		{console.log('Accound found');
 		console.log(show);
 		}
+	}catch(e){
+		console.log('unable to do anything');
+	}
 }
